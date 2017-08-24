@@ -7,11 +7,15 @@ $pth1 = "Microsoft-Windows-Applocker/EXE and DLL"
 $pth2 = "Microsoft-Windows-Applocker/MSI and Script"
 $pth3 = "Microsoft-Windows-Applocker/Packaged app-Deployment"
 $pth4 = "Microsoft-Windows-Applocker/Packaged app-Execution"
+
+#Output some computer information
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt
 $date | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 echo "Hostname: "$hostname | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $ipv4 | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
+
+#List EXE and DLL Event Logs
 echo "EXE and DLL Audit"| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $a = Get-AppLockerFileInformation -EventLog -LogPath $pth1 -EventType Audited | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
@@ -24,6 +28,8 @@ echo "EXE and DLL Denied"| Out-File -FilePath $env:userprofile\Desktop\AppLocker
 $i = Get-AppLockerFileInformation -EventLog -LogPath $pth1 -EventType Denied | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 echo ""| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
+
+#List MSI and Script Event Logs
 echo "MSI and Script Audited"| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $b = Get-AppLockerFileInformation -EventLog -LogPath $pth2 -EventType Audited | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
@@ -36,6 +42,8 @@ echo "MSI and Script Audited"| Out-File -FilePath $env:userprofile\Desktop\AppLo
 $j = Get-AppLockerFileInformation -EventLog -LogPath $pth2 -EventType Denied | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 echo ""| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
+
+#List Packaged App-Deployment Event Logs
 echo "Packaged app-Deployment Audit"| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $c = Get-AppLockerFileInformation -EventLog -LogPath $pth3 -EventType Audited | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
@@ -48,6 +56,8 @@ echo ""| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $k = Get-AppLockerFileInformation -EventLog -LogPath $pth3 -EventType Denied | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 echo ""| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
+
+#List Packaged App-Exectuion Event Logs
 echo "Packaged app-Execution Audited"| Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $d = Get-AppLockerFileInformation -EventLog -LogPath $pth4 -EventType Audited | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
 $divider | Out-File -FilePath $env:userprofile\Desktop\AppLockerAudit.txt -Append
